@@ -11,7 +11,8 @@ const products = [
     price: 29,
     abv: '4,5%',
     category: '5L',
-    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=300&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=400&q=80',
+    alt: 'Bière blonde dorée en verre, lumière chaude',
   },
   {
     id: 2,
@@ -22,7 +23,8 @@ const products = [
     price: 33,
     abv: '6%',
     category: '5L',
-    image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=400&h=300&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&q=80',
+    alt: 'Bière IPA ambrée fruitée dans un verre tulipe',
   },
   {
     id: 3,
@@ -33,7 +35,8 @@ const products = [
     price: 35,
     abv: '5,5%',
     category: '5L',
-    image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=300&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1566633806827-5b62fe9e5a3f?w=400&q=80',
+    alt: 'Stout sombre et crémeuse, mousse épaisse sur fond noir',
   },
   {
     id: 4,
@@ -44,7 +47,8 @@ const products = [
     price: 39,
     abv: '5%',
     category: '6L',
-    image: 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=300&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=400&q=80',
+    alt: 'Bière ambrée caramélisée aux reflets cuivrés',
   },
   {
     id: 5,
@@ -55,7 +59,8 @@ const products = [
     price: 95,
     abv: '4,7%',
     category: '20L',
-    image: 'https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=400&h=300&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&q=80',
+    alt: 'Lager blonde classique, verre pression sur comptoir',
   },
   {
     id: 6,
@@ -66,7 +71,8 @@ const products = [
     price: 110,
     abv: '6,5%',
     category: '20L',
-    image: 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=400&h=300&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1471510432697-d1ded4c1ab01?w=400&q=80',
+    alt: 'Bière saison herbacée dorée en verre artisanal',
   },
 ]
 
@@ -110,7 +116,7 @@ function Catalogue() {
                 <img
                   className="catalogue__card-photo"
                   src={product.image}
-                  alt={product.name}
+                  alt={product.alt}
                   loading="lazy"
                 />
                 <div className="catalogue__card-img-overlay" />

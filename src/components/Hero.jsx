@@ -7,8 +7,8 @@ function Hero() {
       <div className="hero__bg">
         <img
           className="hero__bg-img"
-          src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=1920&q=80&auto=format&fit=crop"
-          alt=""
+          src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1920&q=80"
+          alt="Verre de bière artisanale pétillante, mousse généreuse sur fond sombre"
           loading="eager"
         />
         <div className="hero__overlay" />

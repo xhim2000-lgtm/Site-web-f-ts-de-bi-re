@@ -44,8 +44,8 @@ function Histoire() {
             <div className="histoire__placeholder">
               <img
                 className="histoire__photo"
-                src="https://images.unsplash.com/photo-1532634993-15f421e42ec0?w=600&h=750&q=80&auto=format&fit=crop"
-                alt="Brasserie artisanale — cuves inox"
+                src="https://images.unsplash.com/photo-1559818488-a7e152b1e88e?w=800&q=80"
+                alt="Cuves inox d'une brasserie artisanale française"
                 loading="lazy"
               />
               <div className="histoire__vignette" />
