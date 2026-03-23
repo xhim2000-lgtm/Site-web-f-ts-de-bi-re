@@ -11,6 +11,7 @@ const products = [
     price: 29,
     abv: '4,5%',
     category: '5L',
+    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=300&q=80&auto=format&fit=crop',
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const products = [
     price: 33,
     abv: '6%',
     category: '5L',
+    image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=400&h=300&q=80&auto=format&fit=crop',
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const products = [
     price: 35,
     abv: '5,5%',
     category: '5L',
+    image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=300&q=80&auto=format&fit=crop',
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ const products = [
     price: 39,
     abv: '5%',
     category: '6L',
+    image: 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=300&q=80&auto=format&fit=crop',
   },
   {
     id: 5,
@@ -51,6 +55,7 @@ const products = [
     price: 95,
     abv: '4,7%',
     category: '20L',
+    image: 'https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=400&h=300&q=80&auto=format&fit=crop',
   },
   {
     id: 6,
@@ -61,6 +66,7 @@ const products = [
     price: 110,
     abv: '6,5%',
     category: '20L',
+    image: 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=400&h=300&q=80&auto=format&fit=crop',
   },
 ]
 
@@ -100,16 +106,14 @@ function Catalogue() {
         <div className="catalogue__grid">
           {filtered.map((product) => (
             <div key={product.id} className="catalogue__card fade-in">
-              {/* Placeholder image */}
               <div className="catalogue__card-img">
-                <div className="catalogue__card-img-inner">
-                  <svg viewBox="0 0 120 160" fill="none" className="catalogue__card-svg">
-                    <rect x="40" y="20" width="40" height="100" rx="4" stroke="#C9A84C" strokeWidth="1" opacity="0.3" />
-                    <ellipse cx="60" cy="20" rx="20" ry="6" stroke="#C9A84C" strokeWidth="1" opacity="0.3" />
-                    <line x1="60" y1="14" x2="60" y2="5" stroke="#C9A84C" strokeWidth="1" opacity="0.3" />
-                    <rect x="50" y="2" width="20" height="6" rx="2" stroke="#C9A84C" strokeWidth="1" opacity="0.2" />
-                  </svg>
-                </div>
+                <img
+                  className="catalogue__card-photo"
+                  src={product.image}
+                  alt={product.name}
+                  loading="lazy"
+                />
+                <div className="catalogue__card-img-overlay" />
                 <span className="catalogue__card-region">{product.region}</span>
               </div>
 

@@ -29,6 +29,14 @@ const partners = ['Météor', 'BAPBAP', 'Brasserie du Mont Blanc', 'La Parisienn
 function ProSection() {
   return (
     <section id="pros" className="pro section-padding">
+      <div className="pro__bg">
+        <img
+          className="pro__bg-img"
+          src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=70&auto=format&fit=crop"
+          alt=""
+          loading="lazy"
+        />
+      </div>
       <div className="container">
         <div className="pro__header fade-in">
           <span className="pro__badge">POUR LES PROFESSIONNELS</span>

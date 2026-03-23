@@ -56,22 +56,42 @@
 
 .catalogue__card-img {
   position: relative;
-  height: 200px;
-  background: linear-gradient(135deg, #151515, #1a1a1a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 220px;
+  background: #111;
   overflow: hidden;
 }
 
-.catalogue__card-img-inner {
-  width: 80px;
-  opacity: 0.6;
+.catalogue__card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.75) saturate(0.85);
 }
 
-.catalogue__card-svg {
-  width: 100%;
-  height: auto;
+.catalogue__card:hover .catalogue__card-photo {
+  transform: scale(1.05);
+  filter: brightness(0.85) saturate(1);
+}
+
+.catalogue__card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(10, 10, 10, 0.6) 100%
+  );
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.catalogue__card:hover .catalogue__card-img-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(201, 168, 76, 0.08) 0%,
+    rgba(10, 10, 10, 0.7) 100%
+  );
 }
 
 .catalogue__card-region {

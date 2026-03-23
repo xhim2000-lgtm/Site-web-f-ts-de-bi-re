@@ -42,24 +42,13 @@ function Histoire() {
 
           <div className="histoire__visual slide-right">
             <div className="histoire__placeholder">
-              <svg viewBox="0 0 400 500" fill="none" className="histoire__svg">
-                {/* Stylized keg illustration */}
-                <rect x="120" y="50" width="160" height="350" rx="20" stroke="#C9A84C" strokeWidth="1.5" opacity="0.2" />
-                <ellipse cx="200" cy="50" rx="80" ry="20" stroke="#C9A84C" strokeWidth="1.5" opacity="0.2" />
-                <ellipse cx="200" cy="400" rx="80" ry="20" stroke="#C9A84C" strokeWidth="1.5" opacity="0.2" />
-                <line x1="200" y1="30" x2="200" y2="10" stroke="#C9A84C" strokeWidth="1.5" opacity="0.3" />
-                <circle cx="200" cy="8" r="4" stroke="#C9A84C" strokeWidth="1" opacity="0.3" />
-                {/* Rings */}
-                <ellipse cx="200" cy="150" rx="70" ry="8" stroke="#C9A84C" strokeWidth="0.8" opacity="0.15" />
-                <ellipse cx="200" cy="300" rx="70" ry="8" stroke="#C9A84C" strokeWidth="0.8" opacity="0.15" />
-                {/* Label area */}
-                <rect x="150" y="190" width="100" height="70" rx="4" stroke="#C9A84C" strokeWidth="0.8" opacity="0.2" />
-                <text x="200" y="220" textAnchor="middle" fill="#C9A84C" fontSize="10" opacity="0.3" fontFamily="serif">FUT</text>
-                <text x="200" y="240" textAnchor="middle" fill="#C9A84C" fontSize="10" opacity="0.3" fontFamily="serif">LOCAL</text>
-              </svg>
-
-              {/* Ambient glow */}
-              <div className="histoire__glow" />
+              <img
+                className="histoire__photo"
+                src="https://images.unsplash.com/photo-1532634993-15f421e42ec0?w=600&h=750&q=80&auto=format&fit=crop"
+                alt="Brasserie artisanale — cuves inox"
+                loading="lazy"
+              />
+              <div className="histoire__vignette" />
             </div>
           </div>
         </div>
