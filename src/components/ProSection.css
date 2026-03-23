@@ -1,5 +1,26 @@
 .pro {
   background: var(--anthracite);
+  position: relative;
+  overflow: hidden;
+}
+
+.pro .container {
+  position: relative;
+  z-index: 1;
+}
+
+.pro__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pro__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12;
+  filter: saturate(0.2) brightness(0.5);
 }
 
 .pro__header {

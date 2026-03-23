@@ -3,8 +3,15 @@ import './Hero.css'
 function Hero() {
   return (
     <section className="hero">
-      {/* Background grain overlay */}
+      {/* Background photo + overlays */}
       <div className="hero__bg">
+        <img
+          className="hero__bg-img"
+          src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1920&q=80"
+          alt="Verre de bière artisanale pétillante, mousse généreuse sur fond sombre"
+          loading="eager"
+        />
+        <div className="hero__overlay" />
         <div className="hero__grain" />
         <div className="hero__gradient" />
         {/* Geometric decorative elements */}

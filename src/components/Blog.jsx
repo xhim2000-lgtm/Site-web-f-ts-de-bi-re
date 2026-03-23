@@ -7,6 +7,8 @@ const articles = [
     title: 'Découverte Régionale : 5 bières de 5 terroirs français',
     excerpt: 'D\u2019Alsace en Provence, un tour de France en pression pour découvrir la richesse des brasseries locales.',
     link: '#',
+    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=300&q=80',
+    alt: 'Vignoble et terroir français, paysage de campagne au coucher du soleil',
   },
   {
     id: 2,
@@ -14,6 +16,8 @@ const articles = [
     title: 'No/Low Alcohol : Les meilleures alternatives artisanales',
     excerpt: 'Le sans-alcool artisanal n\u2019est plus un compromis. Sélection de nos références les plus surprenantes.',
     link: '#',
+    image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&q=80',
+    alt: 'Boisson rafraîchissante sans alcool, agrumes et herbes fraîches',
   },
   {
     id: 3,
@@ -21,6 +25,8 @@ const articles = [
     title: 'Édition Noël : Notre sélection hivernale aux épices',
     excerpt: 'Cannelle, girofle, agrumes confits — quand les brasseurs français réinventent les classiques de Noël.',
     link: '#',
+    image: 'https://images.unsplash.com/photo-1575367439058-6096bb522a26?w=300&q=80',
+    alt: 'Ambiance hivernale chaleureuse, épices de Noël et boisson chaude',
   },
 ]
 
@@ -39,13 +45,12 @@ function Blog() {
           {articles.map((article) => (
             <a key={article.id} href={article.link} className="blog__card fade-in">
               <div className="blog__card-img">
-                <div className="blog__card-img-inner">
-                  <svg viewBox="0 0 160 120" fill="none">
-                    <rect x="20" y="20" width="120" height="80" rx="4" stroke="#C9A84C" strokeWidth="0.8" opacity="0.2" />
-                    <circle cx="50" cy="50" r="12" stroke="#C9A84C" strokeWidth="0.8" opacity="0.15" />
-                    <path d="M20 80 L60 50 L90 70 L140 30" stroke="#C9A84C" strokeWidth="0.8" opacity="0.15" />
-                  </svg>
-                </div>
+                <img
+                  className="blog__card-photo"
+                  src={article.image}
+                  alt={article.alt}
+                  loading="lazy"
+                />
               </div>
 
               <div className="blog__card-content">
