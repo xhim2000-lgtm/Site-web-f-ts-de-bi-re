@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { CartProvider } from './components/CartContext'
+import CartDrawer from './components/CartDrawer'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
@@ -32,8 +34,9 @@ function App() {
   }, [])
 
   return (
-    <>
+    <CartProvider>
       <Navbar />
+      <CartDrawer />
       <main>
         <Hero />
         <Stats />
@@ -45,7 +48,7 @@ function App() {
       </main>
       <Footer />
       <ConsigneWidget />
-    </>
+    </CartProvider>
   )
 }
 

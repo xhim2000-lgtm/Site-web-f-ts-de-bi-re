@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useCart } from './CartContext'
 import './Navbar.css'
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { totalCount, setDrawerOpen } = useCart()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -45,16 +47,18 @@ function Navbar() {
               </a>
             </li>
           ))}
-          <li className="navbar__links-cta-mobile">
-            <a href="#selection" className="btn btn-gold" onClick={() => setMenuOpen(false)}>
-              Commander
-            </a>
-          </li>
-        </ul>
+          </ul>
 
-        <a href="#selection" className="btn btn-gold navbar__cta">
-          Commander
-        </a>
+        <button className="navbar__cart" onClick={() => setDrawerOpen(true)} aria-label="Panier">
+          <svg className="navbar__cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+          {totalCount > 0 && (
+            <span key={totalCount} className="navbar__cart-badge">{totalCount}</span>
+          )}
+        </button>
 
         <button
           className={`navbar__burger ${menuOpen ? 'navbar__burger--open' : ''}`}

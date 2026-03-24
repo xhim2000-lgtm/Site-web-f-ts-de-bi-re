@@ -161,6 +161,25 @@
 .catalogue__card-btn {
   padding: 8px 20px;
   font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.catalogue__card-btn--added {
+  background: #2e7d32;
+  color: #fff;
+  border: 1px solid #2e7d32;
+  animation: btn-confirm 0.3s ease;
+}
+
+.catalogue__card-btn--added:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+@keyframes btn-confirm {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 @media (max-width: 1024px) {
