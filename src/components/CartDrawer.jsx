@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useCart } from './CartContext'
+import Checkout from './Checkout'
 import './CartDrawer.css'
 
 function CartDrawer() {
   const { items, subtotal, updateQty, removeItem, drawerOpen, setDrawerOpen } = useCart()
   const overlayRef = useRef(null)
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
 
   useEffect(() => {
     if (drawerOpen) {
@@ -66,13 +68,14 @@ function CartDrawer() {
                 <span>Sous-total</span>
                 <span className="cart-drawer__subtotal-price">{subtotal}€</span>
               </div>
-              <button className="btn btn-gold cart-drawer__checkout">
+              <button className="btn btn-gold cart-drawer__checkout" onClick={() => { setDrawerOpen(false); setCheckoutOpen(true) }}>
                 Valider la commande
               </button>
             </div>
           </>
         )}
       </aside>
+      <Checkout open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
     </div>
   )
 }
