@@ -7,8 +7,8 @@ const articles = [
     title: 'Découverte Régionale : 5 bières de 5 terroirs français',
     excerpt: 'D\u2019Alsace en Provence, un tour de France en pression pour découvrir la richesse des brasseries locales.',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=300&q=80',
-    alt: 'Vignoble et terroir français, paysage de campagne au coucher du soleil',
+    image: 'https://images.unsplash.com/photo-1554979506-e90aecb2ef21?w=300&q=80',
+    alt: 'Verres de bières artisanales en terrasse, terroirs français',
   },
   {
     id: 2,
@@ -16,8 +16,8 @@ const articles = [
     title: 'No/Low Alcohol : Les meilleures alternatives artisanales',
     excerpt: 'Le sans-alcool artisanal n\u2019est plus un compromis. Sélection de nos références les plus surprenantes.',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&q=80',
-    alt: 'Boisson rafraîchissante sans alcool, agrumes et herbes fraîches',
+    image: 'https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=300&q=80',
+    alt: 'Bière légère sans alcool en verre, ambiance douce',
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const articles = [
     title: 'Édition Noël : Notre sélection hivernale aux épices',
     excerpt: 'Cannelle, girofle, agrumes confits — quand les brasseurs français réinventent les classiques de Noël.',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1575367439058-6096bb522a26?w=300&q=80',
+    image: 'https://images.unsplash.com/photo-1576020799627-aeac74d58064?w=300&q=80',
     alt: 'Ambiance hivernale chaleureuse, épices de Noël et boisson chaude',
   },
 ]
@@ -50,6 +50,8 @@ function Blog() {
                   src={article.image}
                   alt={article.alt}
                   loading="lazy"
+                  crossOrigin="anonymous"
+                  onError={(e) => { e.target.style.display = 'none' }}
                 />
               </div>
 

@@ -44,9 +44,11 @@ function Histoire() {
             <div className="histoire__placeholder">
               <img
                 className="histoire__photo"
-                src="https://images.unsplash.com/photo-1559818488-a7e152b1e88e?w=800&q=80"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
                 alt="Cuves inox d'une brasserie artisanale française"
                 loading="lazy"
+                crossOrigin="anonymous"
+                onError={(e) => { e.target.style.display = 'none' }}
               />
               <div className="histoire__vignette" />
             </div>

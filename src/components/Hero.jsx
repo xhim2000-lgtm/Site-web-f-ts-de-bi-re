@@ -10,6 +10,8 @@ function Hero() {
           src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1920&q=80"
           alt="Verre de bière artisanale pétillante, mousse généreuse sur fond sombre"
           loading="eager"
+          crossOrigin="anonymous"
+          onError={(e) => { e.target.style.display = 'none' }}
         />
         <div className="hero__overlay" />
         <div className="hero__grain" />

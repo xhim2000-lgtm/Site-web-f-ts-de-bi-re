@@ -33,8 +33,10 @@ function ProSection() {
         <img
           className="pro__bg-img"
           src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=70&auto=format&fit=crop"
-          alt=""
+          alt="Bar professionnel avec tireuses à bière"
           loading="lazy"
+          crossOrigin="anonymous"
+          onError={(e) => { e.target.style.display = 'none' }}
         />
       </div>
       <div className="container">
