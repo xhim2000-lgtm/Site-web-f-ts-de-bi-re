@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+import { useCart } from './CartContext'
 import './Catalogue.css'
 
 const products = [
@@ -80,6 +81,20 @@ const filters = ['Tous', '5L', '6L', '20L', 'Pro']
 
 function Catalogue() {
   const [activeFilter, setActiveFilter] = useState('Tous')
+  const [addedIds, setAddedIds] = useState(new Set())
+  const { addItem } = useCart()
+
+  const handleAdd = useCallback((product) => {
+    addItem(product)
+    setAddedIds((prev) => new Set(prev).add(product.id))
+    setTimeout(() => {
+      setAddedIds((prev) => {
+        const next = new Set(prev)
+        next.delete(product.id)
+        return next
+      })
+    }, 1200)
+  }, [addItem])
 
   const filtered = activeFilter === 'Tous'
     ? products
@@ -135,8 +150,12 @@ function Catalogue() {
                 </div>
                 <div className="catalogue__card-footer">
                   <span className="catalogue__card-price">{product.price}€</span>
-                  <button className="btn btn-gold catalogue__card-btn">
-                    Ajouter
+                  <button
+                    className={`btn catalogue__card-btn ${addedIds.has(product.id) ? 'catalogue__card-btn--added' : 'btn-gold'}`}
+                    onClick={() => handleAdd(product)}
+                    disabled={addedIds.has(product.id)}
+                  >
+                    {addedIds.has(product.id) ? '✓ Ajouté' : 'Ajouter'}
                   </button>
                 </div>
               </div>

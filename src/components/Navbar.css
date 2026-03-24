@@ -59,9 +59,50 @@
   display: none;
 }
 
-.navbar__cta {
-  padding: 10px 24px;
-  font-size: 0.85rem;
+.navbar__cart {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.navbar__cart:hover {
+  color: var(--gold);
+}
+
+.navbar__cart-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.navbar__cart-badge {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 100px;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: badge-pop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0.5); }
+  60% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
 
 /* Burger */
@@ -120,15 +161,6 @@
 
   .navbar__links a {
     font-size: 1.3rem;
-  }
-
-  .navbar__links-cta-mobile {
-    display: block;
-    margin-top: 16px;
-  }
-
-  .navbar__cta {
-    display: none;
   }
 
   .navbar__burger {
