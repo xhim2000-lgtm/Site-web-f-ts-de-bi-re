@@ -35,7 +35,7 @@ const products = [
     price: 35,
     abv: '5,5%',
     category: '5L',
-    image: 'https://images.unsplash.com/photo-1566633806827-5b62fe9e5a3f?w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1518099074172-2e47ee6cfdc0?w=400&q=80',
     alt: 'Stout sombre et crémeuse, mousse épaisse sur fond noir',
   },
   {
@@ -59,7 +59,7 @@ const products = [
     price: 95,
     abv: '4,7%',
     category: '20L',
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=400&q=80',
     alt: 'Lager blonde classique, verre pression sur comptoir',
   },
   {
@@ -71,7 +71,7 @@ const products = [
     price: 110,
     abv: '6,5%',
     category: '20L',
-    image: 'https://images.unsplash.com/photo-1471510432697-d1ded4c1ab01?w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?w=400&q=80',
     alt: 'Bière saison herbacée dorée en verre artisanal',
   },
 ]
@@ -118,6 +118,8 @@ function Catalogue() {
                   src={product.image}
                   alt={product.alt}
                   loading="lazy"
+                  crossOrigin="anonymous"
+                  onError={(e) => { e.target.style.display = 'none' }}
                 />
                 <div className="catalogue__card-img-overlay" />
                 <span className="catalogue__card-region">{product.region}</span>
