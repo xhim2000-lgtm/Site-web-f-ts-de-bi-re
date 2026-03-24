@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import './Histoire.css'
 
 const values = [
@@ -6,7 +7,27 @@ const values = [
   { label: 'Agile', desc: 'Logistique mutualisée bas carbone.' },
 ]
 
+/* Images de brasserie/fûts classées par priorité */
+const HISTOIRE_IMAGES = [
+  'https://images.unsplash.com/photo-1559818488-a7e152b1e88e?w=800&q=80',
+  'https://images.unsplash.com/photo-1571414229546-14d8f96cf9c8?w=800&q=80',
+  'https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=800&q=80',
+  'https://images.unsplash.com/photo-1445476755903-fd6c3df63afc?w=800&q=80',
+]
+
 function Histoire() {
+  const handleImgError = useCallback((e) => {
+    const img = e.target
+    const current = img.getAttribute('src')
+    const idx = HISTOIRE_IMAGES.indexOf(current)
+    const next = HISTOIRE_IMAGES[idx + 1]
+    if (next) {
+      img.setAttribute('src', next)
+    } else {
+      img.style.display = 'none'
+    }
+  }, [])
+
   return (
     <section id="histoire" className="histoire section-padding">
       <div className="container">
@@ -44,11 +65,11 @@ function Histoire() {
             <div className="histoire__placeholder">
               <img
                 className="histoire__photo"
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                src={HISTOIRE_IMAGES[0]}
                 alt="Cuves inox d'une brasserie artisanale française"
                 loading="lazy"
                 crossOrigin="anonymous"
-                onError={(e) => { e.target.style.display = 'none' }}
+                onError={handleImgError}
               />
               <div className="histoire__vignette" />
             </div>
