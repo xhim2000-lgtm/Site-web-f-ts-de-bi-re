@@ -104,6 +104,17 @@ function Catalogue() {
             </div>
           ))}
         </div>
+
+        <div className="catalogue__explore fade-in">
+          <a
+            href="#catalogue"
+            className="btn btn-gold catalogue__explore-btn"
+            onClick={() => { window.scrollTo({ top: 0 }) }}
+          >
+            Explorer le catalogue →
+          </a>
+          <p className="catalogue__explore-sub">Toutes nos bières, tous formats, tous styles</p>
+        </div>
       </div>
 
       {openProduct && (
