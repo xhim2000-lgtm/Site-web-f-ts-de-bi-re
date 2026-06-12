@@ -49,9 +49,11 @@ export function DeliveryZoneModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const result = checkDeliveryZone(input)
+    const trimmed = input.trim()
+    setInput(trimmed)
+    const result = checkDeliveryZone(trimmed)
     setCheck(result)
-    if (result) saveZone(input)
+    if (result) saveZone(trimmed)
   }
 
   const handleOverlay = (e) => {
@@ -67,19 +69,24 @@ export function DeliveryZoneModal() {
         <p className="zone-modal__sub">Renseignez votre code postal pour connaître votre délai estimé.</p>
 
         <form className="zone-modal__form" onSubmit={handleSubmit}>
-          <input
-            ref={inputRef}
-            className="zone-modal__input"
-            placeholder="Ex: 75011, B-1000, CH-1201…"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button type="submit" className="btn btn-gold zone-modal__submit">Vérifier</button>
+          <label htmlFor="zone-input" className="zone-modal__field-label">Code postal ou ville</label>
+          <div className="zone-modal__row">
+            <input
+              id="zone-input"
+              ref={inputRef}
+              className="zone-modal__input"
+              placeholder="Ex: 75011, Paris, B-1000, Lausanne…"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <button type="submit" className="btn btn-gold zone-modal__submit">Vérifier</button>
+          </div>
+          <p className="zone-modal__helper">Tapez votre code postal pour un résultat précis</p>
         </form>
 
-        {check === null && input && (
+        {check === null && input.trim() && (
           <div className="zone-modal__result zone-modal__result--miss">
-            <strong>Désolé,</strong> ce code postal ne semble pas reconnu. Vérifiez la saisie ou contactez-nous pour une livraison sur mesure.
+            Nous ne reconnaissons pas cette saisie. Essayez avec un code postal exact <strong>(ex: 75011)</strong>.
           </div>
         )}
 
