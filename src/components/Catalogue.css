@@ -205,6 +205,22 @@
   100% { transform: scale(1); }
 }
 
+.catalogue__explore {
+  margin-top: 56px;
+  text-align: center;
+}
+
+.catalogue__explore-btn {
+  padding: 16px 40px;
+  font-size: 1rem;
+}
+
+.catalogue__explore-sub {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--gray-light);
+}
+
 @media (max-width: 1024px) {
   .catalogue__grid {
     grid-template-columns: repeat(2, 1fr);
