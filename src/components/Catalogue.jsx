@@ -1,92 +1,24 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useCart } from './CartContext'
+import { useToast } from './ToastContext'
+import ProductModal from './ProductModal'
+import { products } from '../data/products'
 import './Catalogue.css'
-
-const products = [
-  {
-    id: 1,
-    name: 'Blonde Légère Alsacienne',
-    style: 'Blonde',
-    region: 'Alsace',
-    volume: '5L',
-    price: 29,
-    abv: '4,5%',
-    category: '5L',
-    image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=400&q=80',
-    alt: 'Bière blonde dorée en verre, lumière chaude',
-  },
-  {
-    id: 2,
-    name: 'IPA Fruitée Bretonne',
-    style: 'IPA',
-    region: 'Bretagne',
-    volume: '5L',
-    price: 33,
-    abv: '6%',
-    category: '5L',
-    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&q=80',
-    alt: 'Bière IPA ambrée fruitée dans un verre tulipe',
-  },
-  {
-    id: 3,
-    name: 'Stout Chocolatée Normande',
-    style: 'Stout',
-    region: 'Normandie',
-    volume: '5L',
-    price: 35,
-    abv: '5,5%',
-    category: '5L',
-    image: 'https://images.unsplash.com/photo-1518099074172-2e47ee6cfdc0?w=400&q=80',
-    alt: 'Stout sombre et crémeuse, mousse épaisse sur fond noir',
-  },
-  {
-    id: 4,
-    name: 'Ambrée Caramélisée',
-    style: 'Ambrée',
-    region: 'Sud-Ouest',
-    volume: '6L',
-    price: 39,
-    abv: '5%',
-    category: '6L',
-    image: 'https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=400&q=80',
-    alt: 'Bière ambrée caramélisée aux reflets cuivrés',
-  },
-  {
-    id: 5,
-    name: 'Lager Classique Parisienne',
-    style: 'Lager',
-    region: 'Paris',
-    volume: '20L',
-    price: 95,
-    abv: '4,7%',
-    category: '20L',
-    image: 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=400&q=80',
-    alt: 'Lager blonde classique, verre pression sur comptoir',
-  },
-  {
-    id: 6,
-    name: 'Saison Herbacée Provençale',
-    style: 'Saison',
-    region: 'Provence',
-    volume: '20L',
-    price: 110,
-    abv: '6,5%',
-    category: '20L',
-    image: 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?w=400&q=80',
-    alt: 'Bière saison herbacée dorée en verre artisanal',
-  },
-]
 
 const filters = ['Tous', '5L', '6L', '20L', 'Pro']
 
 function Catalogue() {
   const [activeFilter, setActiveFilter] = useState('Tous')
   const [addedIds, setAddedIds] = useState(new Set())
+  const [openProduct, setOpenProduct] = useState(null)
   const { addItem } = useCart()
+  const { showToast } = useToast()
 
-  const handleAdd = useCallback((product) => {
+  const handleAdd = useCallback((product, e) => {
+    e?.stopPropagation()
     addItem(product)
     setAddedIds((prev) => new Set(prev).add(product.id))
+    showToast(`${product.name} ajouté au panier`)
     setTimeout(() => {
       setAddedIds((prev) => {
         const next = new Set(prev)
@@ -94,7 +26,7 @@ function Catalogue() {
         return next
       })
     }, 1200)
-  }, [addItem])
+  }, [addItem, showToast])
 
   const filtered = activeFilter === 'Tous'
     ? products
@@ -126,7 +58,14 @@ function Catalogue() {
 
         <div className="catalogue__grid">
           {filtered.map((product) => (
-            <div key={product.id} className="catalogue__card fade-in">
+            <div
+              key={product.id}
+              className="catalogue__card fade-in"
+              onClick={() => setOpenProduct(product)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter') setOpenProduct(product) }}
+            >
               <div className="catalogue__card-img">
                 <img
                   className="catalogue__card-photo"
@@ -138,6 +77,7 @@ function Catalogue() {
                 />
                 <div className="catalogue__card-img-overlay" />
                 <span className="catalogue__card-region">{product.region}</span>
+                <span className="catalogue__card-zoom">Voir la fiche →</span>
               </div>
 
               <div className="catalogue__card-body">
@@ -147,12 +87,14 @@ function Catalogue() {
                   <span>{product.volume}</span>
                   <span className="catalogue__card-sep">&middot;</span>
                   <span>{product.abv}</span>
+                  <span className="catalogue__card-sep">&middot;</span>
+                  <span>IBU {product.ibu}</span>
                 </div>
                 <div className="catalogue__card-footer">
                   <span className="catalogue__card-price">{product.price}€</span>
                   <button
                     className={`btn catalogue__card-btn ${addedIds.has(product.id) ? 'catalogue__card-btn--added' : 'btn-gold'}`}
-                    onClick={() => handleAdd(product)}
+                    onClick={(e) => handleAdd(product, e)}
                     disabled={addedIds.has(product.id)}
                   >
                     {addedIds.has(product.id) ? '✓ Ajouté' : 'Ajouter'}
@@ -163,6 +105,10 @@ function Catalogue() {
           ))}
         </div>
       </div>
+
+      {openProduct && (
+        <ProductModal product={openProduct} onClose={() => setOpenProduct(null)} />
+      )}
     </section>
   )
 }

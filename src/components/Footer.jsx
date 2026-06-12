@@ -1,3 +1,4 @@
+import { legalInfo } from '../data/account'
 import './Footer.css'
 
 function Footer() {
@@ -20,7 +21,6 @@ function Footer() {
           </div>
 
           <div className="footer__social">
-            {/* Instagram */}
             <a href="#" className="footer__social-link" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -28,7 +28,6 @@ function Footer() {
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
               </svg>
             </a>
-            {/* LinkedIn */}
             <a href="#" className="footer__social-link" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -38,8 +37,15 @@ function Footer() {
           </div>
         </div>
 
+        <div className="footer__legal">
+          <span><strong>SIRET</strong> {legalInfo.siret}</span>
+          <span><strong>TVA</strong> {legalInfo.tva}</span>
+          <span><strong>Capital</strong> {legalInfo.capital}</span>
+          <span>{legalInfo.licence}</span>
+        </div>
+
         <div className="footer__bottom">
-          <p>&copy; 2025 FutLocal &mdash; Distribué en France, Belgique, Luxembourg &amp; Suisse</p>
+          <p>&copy; 2026 FutLocal &mdash; Siège : {legalInfo.siege} &mdash; Distribué en France, Belgique, Luxembourg &amp; Suisse</p>
         </div>
       </div>
     </footer>

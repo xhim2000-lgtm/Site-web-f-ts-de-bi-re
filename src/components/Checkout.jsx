@@ -1,15 +1,19 @@
 import { useState, useEffect, useRef } from 'react'
 import { useCart } from './CartContext'
+import { useDeliveryZone } from './DeliveryZoneContext'
+import { useToast } from './ToastContext'
 import './Checkout.css'
 
 function Checkout({ open, onClose }) {
   const { items, subtotal, setItems } = useCart()
+  const { cp: savedCp, zone } = useDeliveryZone()
+  const { showToast } = useToast()
   const [step, setStep] = useState(1)
   const [payMethod, setPayMethod] = useState('card')
   const [confirmed, setConfirmed] = useState(false)
   const overlayRef = useRef(null)
 
-  const [address, setAddress] = useState({ nom: '', adresse: '', ville: '', cp: '' })
+  const [address, setAddress] = useState({ nom: '', adresse: '', ville: '', cp: savedCp || '' })
   const [card, setCard] = useState({ numero: '', expiration: '', cvv: '', porteur: '' })
 
   const shipping = subtotal >= 100 ? 0 : 5
@@ -20,11 +24,12 @@ function Checkout({ open, onClose }) {
       document.body.style.overflow = 'hidden'
       setStep(1)
       setConfirmed(false)
+      if (savedCp) setAddress((a) => ({ ...a, cp: savedCp }))
     } else {
       document.body.style.overflow = ''
     }
     return () => { document.body.style.overflow = '' }
-  }, [open])
+  }, [open, savedCp])
 
   const handleOverlay = (e) => {
     if (e.target === overlayRef.current) onClose()
@@ -32,6 +37,7 @@ function Checkout({ open, onClose }) {
 
   const handleConfirm = () => {
     setConfirmed(true)
+    showToast('🎉 Commande confirmée — email de suivi envoyé')
     setTimeout(() => {
       setItems([])
     }, 500)
@@ -96,6 +102,11 @@ function Checkout({ open, onClose }) {
             </div>
 
             <h3 className="checkout__subtitle">Adresse de livraison</h3>
+            {zone && (
+              <div className="checkout__zone-info">
+                📍 <strong>{zone.label}</strong> — {zone.message}
+              </div>
+            )}
             <div className="checkout__form">
               <input
                 className="checkout__input"

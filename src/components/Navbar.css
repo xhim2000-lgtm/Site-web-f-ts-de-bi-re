@@ -59,6 +59,38 @@
   display: none;
 }
 
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar__user {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.navbar__user:hover { color: var(--gold); }
+
+.navbar__user-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--black);
+}
+
 .navbar__cart {
   position: relative;
   background: none;

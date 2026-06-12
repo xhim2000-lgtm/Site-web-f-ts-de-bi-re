@@ -68,8 +68,26 @@
   color: var(--gold);
 }
 
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 32px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+  font-size: 0.78rem;
+  color: var(--gray-light);
+  justify-content: center;
+  text-align: center;
+}
+
+.footer__legal strong {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 6px;
+}
+
 .footer__bottom {
-  padding-top: 24px;
+  padding-top: 18px;
   border-top: 1px solid rgba(245, 240, 232, 0.06);
 }
 
