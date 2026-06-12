@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useCart } from './CartContext'
 import { useToast } from './ToastContext'
-import { products } from '../data/products'
+import { homeProducts as products } from '../data/products'
 import './EventCalculator.css'
 
 const EVENT_TYPES = [
