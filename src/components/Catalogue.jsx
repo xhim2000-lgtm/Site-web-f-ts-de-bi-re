@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { useCart } from './CartContext'
 import { useToast } from './ToastContext'
 import ProductModal from './ProductModal'
-import { products } from '../data/products'
+import { homeProducts as products } from '../data/products'
 import './Catalogue.css'
 
 const filters = ['Tous', '5L', '6L', '20L', 'Pro']

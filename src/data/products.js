@@ -426,6 +426,10 @@ export const products = [
   },
 ]
 
+// Sous-ensemble affiché sur la home (section "La Sélection", calculateur événement,
+// quick order B2B). La page /catalogue garde l'intégralité.
+export const homeProducts = products.filter((p) => p.id <= 6)
+
 export function findProduct(id) {
   return products.find((p) => p.id === id)
 }
