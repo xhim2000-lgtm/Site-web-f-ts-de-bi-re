@@ -133,6 +133,18 @@
   margin-top: 2px;
 }
 
+.checkout__zone-info {
+  background: rgba(76, 175, 80, 0.08);
+  border: 1px solid rgba(76, 175, 80, 0.25);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.86rem;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+
+.checkout__zone-info strong { color: #66bb6a; }
+
 /* Form */
 .checkout__form {
   display: flex;
