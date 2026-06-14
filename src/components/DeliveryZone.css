@@ -1,6 +1,9 @@
 /* Sticky banner */
 .zone-banner {
   position: sticky;
+  /* réserve la hauteur de la navbar fixe au-dessus, sinon la bannière est rendue
+     derrière la nav (z-index inférieur) et invisible en haut de page */
+  margin-top: var(--nav-height);
   top: var(--nav-height);
   z-index: 900;
   background: linear-gradient(90deg, rgba(201, 168, 76, 0.18), rgba(201, 168, 76, 0.05));

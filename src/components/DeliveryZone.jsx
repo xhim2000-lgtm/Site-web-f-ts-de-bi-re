@@ -26,26 +26,29 @@ export function DeliveryBanner() {
   )
 }
 
+// Gate : ne monte le contenu que quand la modale est ouverte, ce qui permet
+// d'initialiser input/check via useState (au lieu d'un reset dans un effet).
 export function DeliveryZoneModal() {
-  const { cp, zone, saveZone, modalOpen, closeZoneModal } = useDeliveryZone()
+  const { modalOpen } = useDeliveryZone()
+  if (!modalOpen) return null
+  return <DeliveryZoneModalInner />
+}
+
+function DeliveryZoneModalInner() {
+  const { cp, zone, saveZone, closeZoneModal } = useDeliveryZone()
   const [input, setInput] = useState(cp)
   const [check, setCheck] = useState(zone)
   const overlayRef = useRef(null)
   const inputRef = useRef(null)
 
   useEffect(() => {
-    if (modalOpen) {
-      document.body.style.overflow = 'hidden'
-      setInput(cp)
-      setCheck(zone)
-      setTimeout(() => inputRef.current?.focus(), 100)
-    } else {
+    document.body.style.overflow = 'hidden'
+    const t = setTimeout(() => inputRef.current?.focus(), 100)
+    return () => {
       document.body.style.overflow = ''
+      clearTimeout(t)
     }
-    return () => { document.body.style.overflow = '' }
-  }, [modalOpen, cp, zone])
-
-  if (!modalOpen) return null
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()

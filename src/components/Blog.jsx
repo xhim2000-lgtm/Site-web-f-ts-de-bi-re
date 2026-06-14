@@ -37,7 +37,7 @@ function Blog() {
         <div className="fade-in">
           <h2 className="section-title">Les Sélections du Moment</h2>
           <p className="section-subtitle">
-            Inspirations, découvertes et coups de c\u0153ur de l\u2019équipe.
+            Inspirations, découvertes et coups de cœur de l’équipe.
           </p>
         </div>
 

@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+// Provider + hook co-localisés volontairement (pattern Context idiomatique).
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { ACCOUNT_STORAGE_KEY, demoAccount } from '../data/account'
 
@@ -12,7 +14,7 @@ export function AccountProvider({ children }) {
   const [walletSolde, setWalletSolde] = useState(demoAccount.walletSolde)
 
   useEffect(() => {
-    try { localStorage.setItem(ACCOUNT_STORAGE_KEY, loggedIn ? '1' : '0') } catch (e) { /* ignore */ }
+    try { localStorage.setItem(ACCOUNT_STORAGE_KEY, loggedIn ? '1' : '0') } catch { /* ignore */ }
   }, [loggedIn])
 
   const openLogin = useCallback(() => {
@@ -29,6 +31,7 @@ export function AccountProvider({ children }) {
   const logout = useCallback(() => {
     setLoggedIn(false)
     setDashboardOpen(false)
+    setWalletSolde(demoAccount.walletSolde) // réinitialise la cagnotte démo
   }, [])
 
   return (

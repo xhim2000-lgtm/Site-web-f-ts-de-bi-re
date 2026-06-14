@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+// Provider + hook co-localisés volontairement (pattern Context idiomatique).
 import { createContext, useCallback, useContext, useState } from 'react'
 import './Toast.css'
 

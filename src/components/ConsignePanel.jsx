@@ -10,7 +10,7 @@ function getNextPalier(amount) {
 
 function generateReturnId() {
   const rand = Math.floor(1000 + Math.random() * 9000)
-  return `FUT-2025-${rand}`
+  return `FUT-${new Date().getFullYear()}-${rand}`
 }
 
 function ConsignePanel({ open, onClose }) {

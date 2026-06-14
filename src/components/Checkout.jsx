@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { useCart } from './CartContext'
 import { useDeliveryZone } from './DeliveryZoneContext'
 import { useToast } from './ToastContext'
 import './Checkout.css'
 
-function Checkout({ open, onClose }) {
+// Monté uniquement quand le checkout est ouvert (le parent CartDrawer le gate).
+// Le démontage à la fermeture réinitialise l'état — pas de reset dans un effet.
+function Checkout({ onClose }) {
   const { items, subtotal, setItems } = useCart()
   const { cp: savedCp, zone } = useDeliveryZone()
   const { showToast } = useToast()
@@ -13,23 +15,11 @@ function Checkout({ open, onClose }) {
   const [confirmed, setConfirmed] = useState(false)
   const overlayRef = useRef(null)
 
-  const [address, setAddress] = useState({ nom: '', adresse: '', ville: '', cp: savedCp || '' })
+  const [address, setAddress] = useState(() => ({ nom: '', adresse: '', ville: '', cp: savedCp || '' }))
   const [card, setCard] = useState({ numero: '', expiration: '', cvv: '', porteur: '' })
 
   const shipping = subtotal >= 100 ? 0 : 5
   const total = subtotal + shipping
-
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden'
-      setStep(1)
-      setConfirmed(false)
-      if (savedCp) setAddress((a) => ({ ...a, cp: savedCp }))
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
-  }, [open, savedCp])
 
   const handleOverlay = (e) => {
     if (e.target === overlayRef.current) onClose()
@@ -43,17 +33,7 @@ function Checkout({ open, onClose }) {
     }, 500)
   }
 
-  const handleClose = () => {
-    if (confirmed) {
-      setStep(1)
-      setConfirmed(false)
-      setAddress({ nom: '', adresse: '', ville: '', cp: '' })
-      setCard({ numero: '', expiration: '', cvv: '', porteur: '' })
-    }
-    onClose()
-  }
-
-  if (!open) return null
+  const handleClose = () => onClose()
 
   return (
     <div ref={overlayRef} className="checkout-overlay" onClick={handleOverlay}>

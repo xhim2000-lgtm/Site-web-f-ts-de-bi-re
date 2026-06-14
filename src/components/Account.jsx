@@ -72,23 +72,24 @@ export function LoginModal() {
   )
 }
 
+// Gate : le contenu (et son état convertOpen) n'est monté que dashboard ouvert,
+// donc l'état se réinitialise au démontage — pas de setState dans un effet.
 export function AccountDashboard() {
-  const { dashboardOpen, setDashboardOpen, account, walletSolde, setWalletSolde, logout } = useAccount()
+  const { dashboardOpen } = useAccount()
+  if (!dashboardOpen) return null
+  return <AccountDashboardInner />
+}
+
+function AccountDashboardInner() {
+  const { setDashboardOpen, account, walletSolde, setWalletSolde, logout } = useAccount()
   const { showToast } = useToast()
   const [convertOpen, setConvertOpen] = useState(false)
   const overlayRef = useRef(null)
 
   useEffect(() => {
-    if (dashboardOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-      setConvertOpen(false)
-    }
+    document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
-  }, [dashboardOpen])
-
-  if (!dashboardOpen) return null
+  }, [])
 
   const handleOverlay = (e) => {
     if (e.target === overlayRef.current) setDashboardOpen(false)

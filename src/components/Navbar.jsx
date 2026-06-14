@@ -25,6 +25,7 @@ function Navbar() {
     { href: '#evenement', label: 'Événement' },
     { href: '#pros', label: 'Pour les Pros' },
     { href: '#histoire', label: 'Notre Histoire' },
+    { href: '#blog', label: 'Blog' },
     { href: '#contact', label: 'Contact' },
   ]
 
