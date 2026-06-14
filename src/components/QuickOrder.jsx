@@ -50,7 +50,7 @@ function QuickOrder() {
     products.forEach((p) => {
       for (let n = 0; n < (qties[p.id] || 0); n += 1) addItem(p)
     })
-    showToast(`✓ ${totalFuts} fût${totalFuts > 1 ? 's' : ''} ajouté${totalFuts > 1 ? 's' : ''} au panier. Votre commercial Thomas Bernard sera notifié.`)
+    showToast(`✓ ${totalFuts} fût${totalFuts > 1 ? 's' : ''} ajouté${totalFuts > 1 ? 's' : ''} au panier. Votre commerciale Mélinda UBEDA sera notifiée.`)
     setQties(Object.fromEntries(products.map((p) => [p.id, 0])))
   }
 

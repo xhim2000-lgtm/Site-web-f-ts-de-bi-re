@@ -141,7 +141,7 @@ function ProSection() {
           <div className="pro__qorder-wrap fade-in">
             <QuickOrder />
             <p className="pro__qorder-note">
-              💡 Connecté à votre commercial Thomas Bernard — temps de validation moyen : 2h ouvrées.
+              💡 Connectée à votre commerciale Mélinda UBEDA — temps de validation moyen : 2h ouvrées.
             </p>
           </div>
         )}

@@ -1,8 +1,8 @@
-// Compte démo Claire Moreau — façade pour l'espace client
+// Compte démo Cédric GUERIN — façade pour l'espace client
 export const demoAccount = {
-  prenom: 'Claire',
-  nom: 'Moreau',
-  email: 'claire.moreau@example.fr',
+  prenom: 'Cédric',
+  nom: 'GUERIN',
+  email: 'cedric.guerin@example.fr',
   membreDepuis: 'mars 2025',
   statut: 'Particulier',
   walletSolde: 27,
@@ -65,22 +65,22 @@ export const legalInfo = {
 
 export const commerciaux = [
   {
-    nom: 'Thomas Bernard',
-    initiales: 'TB',
+    nom: 'Mélinda UBEDA',
+    initiales: 'MU',
     role: 'Responsable Île-de-France',
-    email: 'thomas.bernard@futlocal.fr',
+    email: 'melinda.ubeda@futlocal.fr',
   },
   {
-    nom: 'Léa Marchetti',
-    initiales: 'LM',
+    nom: 'Tamara JOVANOVIC',
+    initiales: 'TJ',
     role: 'Responsable Rhône-Alpes',
-    email: 'lea.marchetti@futlocal.fr',
+    email: 'tamara.jovanovic@futlocal.fr',
   },
   {
-    nom: 'Karim Said',
-    initiales: 'KS',
+    nom: 'Xhemshid VOGLIQI',
+    initiales: 'XV',
     role: 'Responsable Sud-Ouest & événementiel',
-    email: 'karim.said@futlocal.fr',
+    email: 'xhemshid.vogliqi@futlocal.fr',
   },
 ]
 
