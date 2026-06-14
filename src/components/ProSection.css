@@ -349,40 +349,6 @@
   font-size: 1rem;
 }
 
-/* Partners */
-.pro__partners {
-  text-align: center;
-}
-
-.pro__partners-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gray-light);
-  margin-bottom: 20px;
-}
-
-.pro__partners-list {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.pro__partner {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--cream);
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.pro__partner:hover {
-  opacity: 0.8;
-}
-
 @media (max-width: 768px) {
   .pro__benefits {
     grid-template-columns: 1fr;

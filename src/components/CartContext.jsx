@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+// Provider + hook co-localisés volontairement (pattern Context idiomatique).
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 
 const CartContext = createContext()

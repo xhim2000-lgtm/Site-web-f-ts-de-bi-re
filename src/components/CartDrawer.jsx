@@ -8,25 +8,23 @@ function CartDrawer() {
   const overlayRef = useRef(null)
   const [checkoutOpen, setCheckoutOpen] = useState(false)
 
+  // Verrou de scroll partagé : actif tant que le drawer OU le checkout est ouvert.
   useEffect(() => {
-    if (drawerOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = (drawerOpen || checkoutOpen) ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [drawerOpen])
+  }, [drawerOpen, checkoutOpen])
 
   const handleOverlayClick = (e) => {
     if (e.target === overlayRef.current) setDrawerOpen(false)
   }
 
   return (
-    <div
-      ref={overlayRef}
-      className={`cart-overlay ${drawerOpen ? 'cart-overlay--open' : ''}`}
-      onClick={handleOverlayClick}
-    >
+    <>
+      <div
+        ref={overlayRef}
+        className={`cart-overlay ${drawerOpen ? 'cart-overlay--open' : ''}`}
+        onClick={handleOverlayClick}
+      >
       <aside className={`cart-drawer ${drawerOpen ? 'cart-drawer--open' : ''}`}>
         <div className="cart-drawer__header">
           <h2 className="cart-drawer__title">Votre panier</h2>
@@ -75,8 +73,9 @@ function CartDrawer() {
           </>
         )}
       </aside>
-      <Checkout open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
-    </div>
+      </div>
+      {checkoutOpen && <Checkout onClose={() => setCheckoutOpen(false)} />}
+    </>
   )
 }
 

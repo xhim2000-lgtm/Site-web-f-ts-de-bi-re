@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+// Provider + hook co-localisés volontairement (pattern Context idiomatique).
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { ZONE_STORAGE_KEY, checkDeliveryZone } from '../data/zones'
 
@@ -13,7 +15,7 @@ export function DeliveryZoneProvider({ children }) {
     try {
       if (cp) localStorage.setItem(ZONE_STORAGE_KEY, cp)
       else localStorage.removeItem(ZONE_STORAGE_KEY)
-    } catch (e) { /* ignore */ }
+    } catch { /* ignore */ }
   }, [cp])
 
   const zone = cp ? checkDeliveryZone(cp) : null

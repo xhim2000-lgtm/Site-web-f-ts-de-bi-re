@@ -411,8 +411,8 @@ export const products = [
     robe: 'Rubis',
     aromes: ['Cannelle', 'Orange amère', 'Clou de girofle'],
     category: '20L',
-    image: 'https://images.unsplash.com/photo-1518099074172-2e47ee6cfdc0?w=600&q=80',
-    alt: 'Édition Hiver rubis épicée',
+    image: 'https://images.unsplash.com/photo-1576020799627-aeac74d58064?w=600&q=80',
+    alt: 'Édition Hiver rubis épicée, ambiance de Noël',
     description: 'L\'édition hivernale signature de Météor : épices de Noël, écorces d\'orange amère, finale chaleureuse. Brassée en série limitée chaque année pour les fêtes — quantités strictement comptées.',
     brasserie: { nom: 'Météor', ville: 'Hochfelden (67)', annee: 1640 },
     accords: ['Bûche de Noël', 'Foie gras', 'Vin chaud (en remplacement)'],
@@ -429,7 +429,3 @@ export const products = [
 // Sous-ensemble affiché sur la home (section "La Sélection", calculateur événement,
 // quick order B2B). La page /catalogue garde l'intégralité.
 export const homeProducts = products.filter((p) => p.id <= 6)
-
-export function findProduct(id) {
-  return products.find((p) => p.id === id)
-}
